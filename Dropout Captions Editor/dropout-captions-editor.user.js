@@ -1,10 +1,11 @@
 // ==UserScript==
 // @name         Dropout Captions Editor
-// @version      1.0
+// @version      1.1
 // @author       giandrop
+// @namespace    https://github.com/giandrop
 // @license      MIT
-// @description  Add a button to the VHX player that let you import, edit and save closed captions.
-// @homepage     https://github.com/giandrop
+// @description  A userscript that let you import, edit and save captions from any VHX video.
+// @homepage     https://github.com/giandrop/Dropout-userscripts/tree/master/Dropout%20Captions%20Editor
 // @include      *embed.vhx.tv*
 // @grant        none
 // ==/UserScript==
@@ -34,10 +35,10 @@ const editor_html = `
   </div>
   <div>
     <label for="import-vtt" class="dropout-cc-button">
-      <div>Import VTT file</div>
+      <div>Import</div>
       <input id="import-vtt" type="file" style="display:none" accept=".txt, .vtt, text, text/vtt">
     </label>
-    <a id="export-vtt" class="dropout-cc-button" download="captions">Export VTT file</a>
+    <a id="export-vtt" class="dropout-cc-button" download="captions.txt">Export</a>
     <button id="save_btn" class="dropout-cc-button">Apply</button>
   </div>
 `;
@@ -97,8 +98,6 @@ const STYLE = `
     background-color: yellow;
 }
 `;
-
-const TRACK_ID = 'dropout-subtitles-track';
 
 function string_to_date(hh, mm, ss, mil) {
     let date = new Date(0)
@@ -174,7 +173,6 @@ function string_to_date(hh, mm, ss, mil) {
                 video.appendChild(track)
             }
 
-            //track.id = TRACK_ID
             track.src = `data:text/vtt;charset=UTF-8;base64,${encoded}`
             track.default = true
 

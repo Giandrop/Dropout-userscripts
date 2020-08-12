@@ -4,7 +4,8 @@
 // @author       giandrop
 // @license      MIT
 // @description  Add a button to the VHX player that let you import, edit and save closed captions.
-// @homepage     https://github.com/giandrop
+// @homepage     https://github.com/giandrop/Dropout-userscripts/tree/master/Dropout%20Captions%20Editor
+// @namespace    https://github.com/giandrop
 // @include      *embed.vhx.tv*
 // @grant        none
 // ==/UserScript==
@@ -34,10 +35,10 @@ const editor_html = `
   </div>
   <div>
     <label for="import-vtt" class="dropout-cc-button">
-      <div>Import VTT file</div>
+      <div>Import</div>
       <input id="import-vtt" type="file" style="display:none" accept=".txt, .vtt, text, text/vtt">
     </label>
-    <a id="export-vtt" class="dropout-cc-button" download="captions">Export VTT file</a>
+    <a id="export-vtt" class="dropout-cc-button" download="captions.txt">Export</a>
     <button id="save_btn" class="dropout-cc-button">Apply</button>
   </div>
 `;
